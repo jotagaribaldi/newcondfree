@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "436688052905",
+    "firebase_url": "https://condominiolivreappc-default-rtdb.firebaseio.com",
+    "project_id": "condominiolivreappc",
+    "storage_bucket": "condominiolivreappc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436688052905:android:9530455a5641e921e97fb8",
+        "android_client_info": {
+          "package_name": "br.com.condominiolivre.condominiolivreappc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "436688052905-8i3n36ab1kl66hiqi1c6u56s23i7emk2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.com.condominiolivre.condominiolivreappc",
+            "certificate_hash": "949b965e042b64338d6ba623ff54f3d9370ed8b4"
+          }
+        },
+        {
+          "client_id": "436688052905-71n5fa47hf798jvvs9n6avi54bj7uujr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBVbYqkZmiGlGDRt7zsXDoI6nT7kvzIQcs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "436688052905-71n5fa47hf798jvvs9n6avi54bj7uujr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

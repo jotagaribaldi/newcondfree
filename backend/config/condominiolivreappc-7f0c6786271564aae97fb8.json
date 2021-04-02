@@ -1,0 +1,10 @@
+const firebaseConfig = {
+  apiKey: "AIzaSyBD0kN-k2zy2gyQGAwo2IPgvOuOpwHkcXI",
+  authDomain: "condominiolivreappc.firebaseapp.com",
+  databaseURL: "https://condominiolivreappc-default-rtdb.firebaseio.com",
+  projectId: "condominiolivreappc",
+  storageBucket: "condominiolivreappc.appspot.com",
+  messagingSenderId: "436688052905",
+  appId: "1:436688052905:web:7f0c6786271564aae97fb8",
+  measurementId: "G-72JRVEVLEF"
+};
