@@ -85,4 +85,9 @@ class FaturaEmpresasconv extends \yii\db\ActiveRecord
     {
         return $this->hasMany(FaturaDetalhes::className(), ['fatura_empresaconv' => 'idfatura']);
     }
+
+    public function setStatusfaturapaga($idfatfat)
+    {
+         Yii::$app->db->createCommand()->update('comprasrealiz', ['statuspgto' => 'PAGO'], ['id_compras' => $idfatfat])->execute();
+    }
 }

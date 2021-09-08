@@ -18,6 +18,7 @@ class CondominiosSearch extends Condominios
     {
         return [
             [['id_condom', 'parceiro_id', 'cidade_cond', 'uf_cond', 'user_cad_cond'], 'integer'],
+            [['contratpercent'], 'number'],
             [['nome_condomi', 'cep', 'endereco', 'num_condom', 'compl_ender_cond', 'fonefixo_cond', 'celular_gerente', 'statuscond','cnpj_condom', 'nome_gerente', 'ip_cond_cad', 'datahoracad_cond'], 'safe'],
         ];
     }
@@ -64,6 +65,7 @@ class CondominiosSearch extends Condominios
             'uf_cond' => $this->uf_cond,
             'datahoracad_cond' => $this->datahoracad_cond,
             'user_cad_cond' => $this->user_cad_cond,
+            'contratpercent' => $this->contratpercent,
         ]);
 
         $query->andFilterWhere(['like', 'nome_condomi', $this->nome_condomi])

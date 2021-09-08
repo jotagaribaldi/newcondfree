@@ -18,7 +18,6 @@ class FaturaDetalhesSearch extends FaturaDetalhes
     {
         return [
             [['id_faturadetail', 'fatura_empresaconv', 'comprarealiz_id', 'id_user_registro'], 'integer'],
-            [['valor_compra', 'valor_cashback', 'valor_desconto_user'], 'number'],
             [['datahoraregistro'], 'safe'],
         ];
     }
@@ -62,9 +61,6 @@ class FaturaDetalhesSearch extends FaturaDetalhes
             'id_faturadetail' => $this->id_faturadetail,
             'fatura_empresaconv' => $this->fatura_empresaconv,
             'comprarealiz_id' => $this->comprarealiz_id,
-            'valor_compra' => $this->valor_compra,
-            'valor_cashback' => $this->valor_cashback,
-            'valor_desconto_user' => $this->valor_desconto_user,
             'datahoraregistro' => $this->datahoraregistro,
             'id_user_registro' => $this->id_user_registro,
         ]);

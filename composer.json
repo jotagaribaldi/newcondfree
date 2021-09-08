@@ -27,7 +27,8 @@
         "kartik-v/yii2-export": "dev-master",
         "kartik-v/yii2-mpdf": "dev-master",
         "grptx/yii2-firebase": "~0.3.1",
-        "kartik-v/yii2-number": "dev-master"
+        "kartik-v/yii2-number": "dev-master",
+        "kartik-v/yii2-grid": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

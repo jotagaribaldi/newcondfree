@@ -5,6 +5,7 @@ namespace backend\controllers;
 use Yii;
 use backend\models\FaturaEmpresasconv;
 use backend\models\FaturaEmpresasconvSearch;
+use backend\models\FaturaDetalhes;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -85,8 +86,15 @@ class FaturaEmpresasController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        //if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        if ($model->load(Yii::$app->request->post()) ) {
+            if($model->status_fatura ==  'PAGA'){   
+                $comprasr = FaturaDetalhes::find()->where(['fatura_empresaconv' => $id ])->all();
+                foreach ($comprasr as $keycpr => $valuecpr) {
+                  $model->setStatusfaturapaga($valuecpr['comprarealiz_id']);
+                }
+            }
+            $model->save();
             return $this->redirect(['view', 'id' => $model->idfatura]);
         }
 

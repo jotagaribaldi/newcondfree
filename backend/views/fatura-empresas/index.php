@@ -1,9 +1,12 @@
 <?php
 
 use yii\helpers\Html;
-use yii\grid\GridView;
+//use yii\grid\GridView;
+use kartik\grid\GridView;
 use yii\helpers\ArrayHelper;
 use backend\models\Empresasconv;
+use backend\models\FaturaDetalhes;
+use backend\models\FaturaDetalhesSearch;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\FaturaEmpresasconvSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
@@ -25,7 +28,23 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+           // ['class' => 'yii\grid\SerialColumn'],
+        	  ['class' => 'kartik\grid\ExpandRowColumn',
+        	  	'value' => function ($model, $key, $index, $column) {
+        	  		return GridView::ROW_COLLAPSED;
+        	  	},
+        	  	'detail'	=> function($model, $key, $index, $column) {
+        	  		$searchModel = new FaturaDetalhesSearch();
+        	  		$searchModel->fatura_empresaconv =  $model->idfatura;
+        	  		$dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        	  		return Yii::$app->controller->renderPartial('_fatdetalhes',  [
+        	  			'searchModel' => $searchModel,
+        	  			'dataProvider' => $dataProvider,
+        	  		]);
+        	  	},
+
+        	  ],
 
             'idfatura',
             [

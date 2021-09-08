@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "631a130fe2625e9b3db8b8b99507857b",
+    "content-hash": "a54b496ea3b1f7188daa3faababaad20",
     "packages": [
         {
             "name": "bower-asset/bootstrap",
@@ -991,16 +991,16 @@
         },
         {
             "name": "kartik-v/yii2-grid",
-            "version": "v3.3.5",
+            "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/kartik-v/yii2-grid.git",
-                "reference": "e4ba0c68ecb864e1a158f16cc73a5e73a6cdf7c7"
+                "reference": "1aa635faba7778d354a7a1e48c66b87744eed2af"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/e4ba0c68ecb864e1a158f16cc73a5e73a6cdf7c7",
-                "reference": "e4ba0c68ecb864e1a158f16cc73a5e73a6cdf7c7",
+                "url": "https://api.github.com/repos/kartik-v/yii2-grid/zipball/1aa635faba7778d354a7a1e48c66b87744eed2af",
+                "reference": "1aa635faba7778d354a7a1e48c66b87744eed2af",
                 "shasum": ""
             },
             "require": {
@@ -1046,7 +1046,7 @@
                     "type": "open_collective"
                 }
             ],
-            "time": "2020-03-27T11:31:59+00:00"
+            "time": "2020-11-26T15:46:03+00:00"
         },
         {
             "name": "kartik-v/yii2-krajee-base",
@@ -7453,7 +7453,8 @@
         "odaialali/yii2-qrcode-reader": 20,
         "kartik-v/yii2-export": 20,
         "kartik-v/yii2-mpdf": 20,
-        "kartik-v/yii2-number": 20
+        "kartik-v/yii2-number": 20,
+        "kartik-v/yii2-grid": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

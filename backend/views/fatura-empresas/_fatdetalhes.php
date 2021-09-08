@@ -7,35 +7,30 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\FaturaDetalhesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Fatura Detalhes';
-$this->params['breadcrumbs'][] = $this->title;
+/*$this->title = 'Fatura Detalhes';
+$this->params['breadcrumbs'][] = $this->title; */
 ?>
 <div class="fatura-detalhes-index">
 
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <p>
-        <?php //= Html::a('Incluir Compra', ['create'], ['class' => 'btn btn-success']) ?>
-    </p> 
-
-    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
-
+  
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id_faturadetail',
-            'fatura_empresaconv',
+           // 'id_faturadetail',
+            //'fatura_empresaconv',
             'comprarealiz_id',
             'comprarealiz.nfnum',
-             'comprarealiz.cnpj_empresaconv',
-            'datahoraregistro:datetime',
+            'comprarealiz.total_pago:currency',
+            'comprarealiz.valretornocashback:currency',
             'comprarealiz.statuspgto',
+            
+            'datahoraregistro:datetime',
             //'id_user_registro',
 
-            ['class' => 'yii\grid\ActionColumn'],
+           // ['class' => 'yii\grid\ActionColumn'],
         ],
     ]); ?>
 

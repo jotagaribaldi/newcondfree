@@ -45,19 +45,19 @@ $condominios = $database->getReference('condominios')->getSnapshot();
 	<p><b>Total Condomínios Cadastrados: <?=$somacondominio ?></b></p>
 
 <?php
- foreach ($condominios->getValue() as $x => $valueimg) :
-              		 $arraycondim = explode(',', $valueimg); ?>
+ //foreach ($condominios->getValue() as $x => $valueimg) :
+       //       		 $arraycondim = explode(',', $valueimg); ?>
               		    <p align="center">
-                 <img src="<?=substr(substr($arraycondim[4],1), 0,-2) ?>" width="296" heigth="117"  alt="Logo do  <?=substr(substr($arraycondim[0],2), 0,-1)?>  "> 
+                 <!--<img src="<?php //=substr(substr($arraycondim[4],1), 0,-2) ?>" width="296" heigth="117"  alt="Logo do  <?php //=substr(substr($arraycondim[0],2), 0,-1)?>  "> -->
                 		</p>
 <?php
-              		  endforeach;
+   //           		  endforeach;
 ?>
 <br/>
 <h3>Condôminos Cadastrados</h3>
 
  <table align="center" width="90%" border="1px">
- 	<tr bgcolor="#c1e5ff"><td align="center"><b>Ord</b></td><td><b> Rótulo Firebase </b></td><td> <b> Condômino Nome </b>  </td><td><b>Telefone</b> </td><td><b>Condomínio</b> </td></tr>
+ 	<tr bgcolor="#c1e5ff"><td align="center"><b>Ord</b></td><td><b> Rótulo Firebase </b></td><td> <b> Condômino Nome </b>  </td><td><b>CPF</b> </td><td><b>Telefone</b> </td><td><b>Condomínio</b> </td></tr>
 
 <?php
 			  $buscaCond = array();
@@ -69,7 +69,7 @@ $condominios = $database->getReference('condominios')->getSnapshot();
               		 	$arraymorad = explode(',', $valuec);
               		
 ?>					 
-	<tr><td align="center"><b><?=$somamorad?></b> </td><td> <?=$xc?> </td><td><?=substr(substr($arraymorad[1],1), 0,-1)?></td><td><?=substr(substr($arraymorad[2],1), 0,-1)?></td><td> <?=substr(substr($arraymorad[4],1), 0,-1)?> </td></tr>
+	<tr><td align="center"><b><?=$somamorad?></b> </td><td> <?=$xc?> </td><td><?=substr(substr($arraymorad[1],1), 0,-1)?></td><td><?=substr(substr($arraymorad[5],1), 0,-1)?></td><td><?=substr(substr($arraymorad[2],1), 0,-1)?></td><td> <?=substr(substr($arraymorad[4],1), 0,-1)?> </td></tr>
 <?php
 			 $somamorad++;
 			 array_push($buscaCond, $arraymorad);
@@ -101,7 +101,7 @@ $condominios = $database->getReference('condominios')->getSnapshot();
 
 	?>
 		<tr>
-			<td align="center" bgcolor="#C0C0C0"> <b><?=$nflidaqtd?></b></td> <td><?=$xy?></td><td><?=substr(substr($arraynflidas[0],2), 0,-1)?></td><td><a href="<?=trim(stripslashes(substr(substr($arraynflidas[5],1),0,-1)))?>" rel="external" target="_blank"> <?=stripslashes(substr(substr($arraynflidas[5],1),0,-1))?> </a></td>
+			<td align="center" bgcolor="#C0C0C0"> <b><?=$nflidaqtd?></b></td> <td><?=$xy?></td><td><?=substr(substr($arraynflidas[0],2), 0,-1)?></td><td> <a href="<?=preg_replace("/[^A-Za-z0-9\/.-=:?|]/", "", trim(stripslashes(substr(substr($arraynflidas[5],1),0,-1))))?>" rel="external" target="_blank"> <?=stripslashes(substr(substr($arraynflidas[5],1),0,-1))?> </a></td>
 		</tr>
 		<tr>
 			<td colspan="2"><?=stripslashes(substr(substr($arraynflidas[6],1),0,-2))?></td>
@@ -109,6 +109,7 @@ $condominios = $database->getReference('condominios')->getSnapshot();
 			<?php
 				//$find = array();
 				//$rotulocond = substr(substr($arraynflidas[0],2), 0,-1);
+
 				$mailcond = substr(substr($arraynflidas[2],1), 0,-1);
 				
 				foreach ($buscaCond as $keybc => $valuebc) {
@@ -172,24 +173,24 @@ $condominios = $database->getReference('condominios')->getSnapshot();
 <p>Notas lidas por aplicativo: <?=$nflidaqtd?></p>
 
 <?php
-	$empresas = $database->getReference('empresasparc')->getSnapshot();
+/*	$empresas = $database->getReference('empresasparc')->getSnapshot();
 
 	 $somaempresas = 0;
               foreach ($empresas->getValue() as $xe => $valuem) :
               		 $arrayempr = explode(',', $valuem);
-              		 print_r($arrayempr);
+              		 print_r($arrayempr); */
 ?>
-		<p><b>Empresa:</b> <?=$xe?></p>
+		<p><b>Empresa:</b> <?// = $xe?></p>
 
 
 <?php
-			echo(substr(substr($arrayempr[0],2), 0,-1).' - <b>'.substr(substr($arrayempr[3],1), 0,-1).'</b> - Segmento: <b>'.substr(substr($arrayempr[1],1), 0,-1).'</b> - Porcent Cashback: <b>'. substr(substr($arrayempr[2],1), 0,-1).'</b><br/>');
-			echo('Fone Fixo: <b>'.substr(substr($arrayempr[8],1), 0,-1).'</b> - Whatsapp: <b>'.substr(substr($arrayempr[7],1), 0,-1).'</b> - Endereço: <b>'. substr(substr($arrayempr[4],1), 0,-1).'</b> - Cidade: </b>'.substr(substr($arrayempr[5],1), 0,-1). '<br/>');
+	/*		echo(substr(substr($arrayempr[0],2), 0,-1).' - <b>'.substr(substr($arrayempr[3],1), 0,-1).'</b> - Segmento: <b>'.substr(substr($arrayempr[1],1), 0,-1).'</b> - Porcent Cashback: <b>'. substr(substr($arrayempr[2],1), 0,-1).'</b><br/>');
+			echo('Fone Fixo: <b>'.substr(substr($arrayempr[8],1), 0,-1).'</b> - Whatsapp: <b>'.substr(substr($arrayempr[7],1), 0,-1).'</b> - Endereço: <b>'. substr(substr($arrayempr[4],1), 0,-1).'</b> - Cidade: </b>'.substr(substr($arrayempr[5],1), 0,-1). '<br/>'); */
 ?>
 			<hr/>
-			<img src="<?=substr(substr($arrayempr[9],1), 0,-1) ?>" width="296" heigth="117"  alt="Logo do  <?=substr(substr($arrayempr[3],1), 0,-1)?>  "> 
-			<p align="cente"><a href="<?=substr(substr($arrayempr[6],1), 0,-1) ?>">Como Chegar</a></p>
+			<!-- <img src="<?php // = substr(substr($arrayempr[9],1), 0,-1) ?>" width="296" heigth="117"  alt="Logo do  <?php //=  substr(substr($arrayempr[3],1), 0,-1)?>  "> -->
+		<!-- 	<p align="cente"><a href="<?php //=substr(substr($arrayempr[6],1), 0,-1) ?>">Como Chegar</a></p>  -->
 			<?php
-			 $somaempresas++;
-             endforeach;
+		//	 $somaempresas++;
+        //     endforeach;
 ?>

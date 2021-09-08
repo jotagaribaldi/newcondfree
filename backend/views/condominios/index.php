@@ -51,6 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'celular_gerente',
             //'cnpj_condom',
             'nome_gerente',
+            'contratpercent',
             [
                 'attribute' => 'statuscond',
                 'filter' => ['ATIVO' => 'Elementary', 'DESATIV' => 'Secondary'],

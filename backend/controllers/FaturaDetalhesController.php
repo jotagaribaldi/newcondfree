@@ -5,6 +5,8 @@ namespace backend\controllers;
 use Yii;
 use backend\models\FaturaDetalhes;
 use backend\models\FaturaDetalhesSearch;
+use backend\models\Comprasrealiz;
+use backend\models\FaturaEmpresasconv;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -65,9 +67,20 @@ class FaturaDetalhesController extends Controller
     public function actionCreate()
     {
         $model = new FaturaDetalhes();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_faturadetail]);
+        if ($model->load(Yii::$app->request->post())) {
+            $valorCompra = Comprasrealiz::find()->select(['total_pago','valretornocashback'])->where(['id_compras' => $model->comprarealiz_id])->one();  
+            $valorFatura = FaturaEmpresasconv::find()->select(['valor_total', 'idfatura'])->where(['idfatura' => $model->fatura_empresaconv])->one();
+            $valor_fatura_atualiza = $valorFatura->valor_total + $valorCompra->valretornocashback;
+            $model->setStatusfaturafat($model->comprarealiz_id);
+            $model->setNovovalorfatura($valorFatura->idfatura, $valor_fatura_atualiza);
+         //   print_r($model); 
+            
+            //echo('<br/><br/><br/><br/>Valor Compras: ');
+            //print_r($valorCompra);
+            //die();
+            $model->save();
+            Yii::$app->session->setFlash('success', "Compra Inserida na Fatura com Sucesso!");
+            return $this->redirect(['fatura-empresas/view', 'id' => $model->fatura_empresaconv]);
         }
 
         return $this->render('create', [
@@ -104,7 +117,16 @@ class FaturaDetalhesController extends Controller
      */
     public function actionDelete($id)
     {
+        $model = $this->findModel($id);
+        $valorCompra = Comprasrealiz::find()->select(['total_pago','valretornocashback'])->where(['id_compras' => $model->comprarealiz_id])->one();  
+        $valorFatura = FaturaEmpresasconv::find()->select(['valor_total', 'idfatura'])->where(['idfatura' => $model->fatura_empresaconv])->one();
+         
         $this->findModel($id)->delete();
+        
+        $valor_fatura_atualiza = $valorFatura->valor_total - $valorCompra->valretornocashback;
+        $model->setStatusfaturapend($model->comprarealiz_id);
+        $model->setNovovalorfatura($valorFatura->idfatura, $valor_fatura_atualiza);
+        Yii::$app->session->setFlash('danger', "Compra Excluída da Fatura!");
 
         return $this->redirect(['index']);
     }

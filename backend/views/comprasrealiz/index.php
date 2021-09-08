@@ -86,7 +86,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'obsleituras',
             [
                 'attribute' => 'statuspgto',
-                'filter'    => ['PAGO' => 'PAGO', 'PEND' => 'PEND', 'NULO' => 'NULO'],
+                'filter'    => ['PAGO' => 'PAGO', 'PEND' => 'PEND', 'FAT' => 'FAT', 'NULO' => 'NULO'],
             ],
             'dat_hora_leitura:datetime',
            
@@ -189,7 +189,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'obsleituras',
             [
                 'attribute' => 'statuspgto',
-                'filter'    => ['PAGO' => 'PAGO', 'PEND' => 'PEND', 'NULO' => 'NULO'],
+                'filter'    => ['PAGO' => 'PAGO', 'PEND' => 'PEND', 'FAT' => 'FAT', 'NULO' => 'NULO'],
             ],
             'dat_hora_leitura:datetime',
             

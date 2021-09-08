@@ -43,9 +43,10 @@ class Condominios extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['parceiro_id', 'nome_condomi', 'cidade_cond', 'statuscond','uf_cond', 'ip_cond_cad', 'user_cad_cond'], 'required'],
+            [['parceiro_id', 'nome_condomi', 'cidade_cond', 'statuscond','uf_cond', 'contratpercent', 'ip_cond_cad', 'user_cad_cond'], 'required'],
             [['parceiro_id', 'cidade_cond', 'uf_cond', 'user_cad_cond'], 'integer'],
             [['datahoracad_cond'], 'safe'],
+            [['contratpercent'], 'number'],
             [['logo_condom'], 'file', 'extensions' => 'jpg,png,jpeg,gif'],
             [['nome_condomi', 'endereco'], 'string', 'max' => 100],
             [['cep', 'fonefixo_cond', 'celular_gerente'], 'string', 'max' => 15],
@@ -74,7 +75,8 @@ class Condominios extends \yii\db\ActiveRecord
             'compl_ender_cond' => 'Complemento',
             'cidade_cond' => 'Cidade',
             'uf_cond' => 'UF',
-	    'logo_condom' => 'Logomarca', 
+	        'logo_condom' => 'Logomarca', 
+            'contratpercent' => '% Retenção',
             'fonefixo_cond' => 'Fone Fixo',
             'statuscond' => 'Situação',
             'celular_gerente' => 'Celular do Gerente',

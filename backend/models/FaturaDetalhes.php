@@ -35,9 +35,8 @@ class FaturaDetalhes extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fatura_empresaconv', 'comprarealiz_id', 'valor_compra', 'valor_cashback', 'valor_desconto_user', 'id_user_registro'], 'required'],
-            [['fatura_empresaconv', 'comprarealiz_id', 'id_user_registro'], 'integer'],
-            [['valor_compra', 'valor_cashback', 'valor_desconto_user'], 'number'],
+            [['fatura_empresaconv', 'comprarealiz_id', 'id_user_registro'], 'required'],
+            [['fatura_empresaconv', 'comprarealiz_id', 'id_user_registro'], 'integer'],             
             [['datahoraregistro'], 'safe'],
             [['comprarealiz_id'], 'exist', 'skipOnError' => true, 'targetClass' => Comprasrealiz::className(), 'targetAttribute' => ['comprarealiz_id' => 'id_compras']],
             [['fatura_empresaconv'], 'exist', 'skipOnError' => true, 'targetClass' => FaturaEmpresasconv::className(), 'targetAttribute' => ['fatura_empresaconv' => 'idfatura']],
@@ -50,14 +49,11 @@ class FaturaDetalhes extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id_faturadetail' => 'Id Faturadetail',
-            'fatura_empresaconv' => 'Fatura Empresaconv',
-            'comprarealiz_id' => 'Comprarealiz ID',
-            'valor_compra' => 'Valor Compra',
-            'valor_cashback' => 'Valor Cashback',
-            'valor_desconto_user' => 'Valor Desconto User',
-            'datahoraregistro' => 'Datahoraregistro',
-            'id_user_registro' => 'Id User Registro',
+            'id_faturadetail' => 'Fatura Detalhe ID',
+            'fatura_empresaconv' => 'Fatura ID',
+            'comprarealiz_id' => 'Compra ID',      
+            'datahoraregistro' => 'Data/hora Registro',
+            'id_user_registro' => 'User Registro',
         ];
     }
 
@@ -79,5 +75,20 @@ class FaturaDetalhes extends \yii\db\ActiveRecord
     public function getFaturaEmpresaconv()
     {
         return $this->hasOne(FaturaEmpresasconv::className(), ['idfatura' => 'fatura_empresaconv']);
+    }
+
+    public function setStatusfaturafat($idfat)
+    {
+        Yii::$app->db->createCommand()->update('comprasrealiz', ['statuspgto' => 'FAT'], ['id_compras' => $idfat])->execute();
+    }
+
+    public function setNovovalorfatura($idfat, $valnfce)
+    {
+        Yii::$app->db->createCommand()->update('fatura_empresasconv', ['valor_total' => $valnfce], ['idfatura' => $idfat])->execute();
+    }
+
+    public function setStatusfaturapend($idfatp)
+    {
+        Yii::$app->db->createCommand()->update('comprasrealiz', ['statuspgto' => 'PEND'], ['id_compras' => $idfatp])->execute();
     }
 }

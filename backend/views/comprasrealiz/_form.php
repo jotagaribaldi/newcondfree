@@ -7,6 +7,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\MaskedInput;
 use backend\models\User;
 use kartik\select2\Select2;
+use kartik\number\NumberControl;
 
 
 /* @var $this yii\web\View */
@@ -42,7 +43,16 @@ use kartik\select2\Select2;
 
     <?= $form->field($model, 'data_horario')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'total_pago')->textInput() ?>
+    <?= $form->field($model, 'total_pago')->widget(NumberControl::classname(), [     'maskedInputOptions' => [
+        'prefix' => 'R$ ',
+        //'suffix' => ' ¢',
+        'groupSeparator' => '.',
+        'radixPoint' => ',',
+        'allowMinus' => false
+    ]
+
+
+    ]); ?>
 
     <?= $form->field($model, 'urlnfsefaz')->textInput(['maxlength' => true]) ?>
 

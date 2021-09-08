@@ -14,6 +14,10 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="fatura-empresasconv-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
+     <div id="message">
+
+          <?= Yii::$app->session->getFlash('success');?>
+      </div>
 
     <p>
         <?= Html::a('Atualizar', ['update', 'id' => $model->idfatura], ['class' => 'btn btn-primary']) ?>
@@ -25,7 +29,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
 
-         <?= Html::a('Incluir Compras', ['fatura-detalhes/create', 'id' => $model->idfatura], ['class' => 'btn btn-info']) ?>
+         <?=$model->status_fatura == 'ABERTA' ? Html::a('Incluir Compras', ['fatura-detalhes/create', 'id' => $model->idfatura], ['class' => 'btn btn-info']) : "&nbsp;<b>NOTA PAGA/FECHADA</b>" ?>
     </p>
 
     <?= DetailView::widget([

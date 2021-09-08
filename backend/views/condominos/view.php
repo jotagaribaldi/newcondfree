@@ -49,11 +49,15 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                'attribute' => 'user.condominio.nome_condomi',
-               'lavel'      => 'Condomínio',
+               'label'      => 'Condomínio',
+            ],
+            [
+               'attribute' => 'user.celularfone',
+               'label'      => 'Celular/Fone',
             ],
             [
                'attribute' => 'user.condominio.logo_condom',
-               'lavel'      => 'Logomarca Condomínio',
+               'label'      => 'Logomarca Condomínio',
                'format'    => ['image',['width'=>'177','height'=>'117']],
             ],
             //'condominio.nome_condomi',

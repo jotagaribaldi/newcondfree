@@ -65,11 +65,11 @@ class FirebaseController extends Controller
      */
     public function actionCreate()
     {
-        $model = new Firebase();
+       // $model = new Firebase();
 
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id_compras]);
-        }
+     //   if ($model->load(Yii::$app->request->post()) && $model->save()) {
+     //       return $this->redirect(['view', 'id' => $model->id_compras]);
+     //   }
 
         return $this->render('create', [
             'model' => $model,
